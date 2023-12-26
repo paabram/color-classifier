@@ -1,6 +1,7 @@
 import pandas as pd
 
 def data():
+    '''Manipulate the csv file of color names, preserving just the RGB values and simplifying the names into a limited number of categories.'''
     # create dataframe
     colors = pd.read_csv('color_names.csv')
     # drop columns that won't be used
