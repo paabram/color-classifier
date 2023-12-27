@@ -1,6 +1,6 @@
 import pandas as pd
 
-def data():
+def data() -> pd.DataFrame:
     '''Manipulate the csv file of color names, preserving just the RGB values and simplifying the names into a limited number of categories.'''
     # create dataframe
     colors = pd.read_csv('color_names.csv')
@@ -22,12 +22,12 @@ def data():
             name = 'purple'
         elif 'grey' in name:
             name = 'gray'
-        # elif 'magenta' in name or 'rose' in name:
-        #     name = 'pink'
+        elif 'magenta' in name or 'rose' in name:
+            name = 'pink'
         elif 'gold' in name:
             name = 'yellow'
-        # elif 'beige' in name or 'tan' in name:
-        #     name = 'brown'
+        elif 'beige' in name or 'tan' in name:
+            name = 'brown'
 
         # check if any of the simpler color terms appear in the color's name
         flag = 0
