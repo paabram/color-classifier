@@ -22,12 +22,12 @@ def data():
             name = 'violet'
         elif 'grey' in name:
             name = 'gray'
-        elif 'magenta' in name or 'rose' in name:
-            name = 'pink'
+        # elif 'magenta' in name or 'rose' in name:
+        #     name = 'pink'
         elif 'gold' in name:
             name = 'yellow'
-        elif 'beige' in name or 'tan' in name:
-            name = 'brown'
+        # elif 'beige' in name or 'tan' in name:
+        #     name = 'brown'
 
         # check if any of the simpler color terms appear in the color's name
         flag = 0
