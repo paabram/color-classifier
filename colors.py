@@ -40,5 +40,5 @@ if __name__ == '__main__':
 
         pg.display.update()
 
-        # leave this screen up for a second
-        time.sleep(1)
+        # let this screen simmer for a second
+        time.sleep(1.5)

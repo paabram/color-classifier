@@ -22,8 +22,6 @@ def data() -> pd.DataFrame:
             name = 'purple'
         elif 'grey' in name:
             name = 'gray'
-        elif 'magenta' in name or 'rose' in name:
-            name = 'pink'
         elif 'gold' in name:
             name = 'yellow'
         elif 'beige' in name or 'tan' in name:
