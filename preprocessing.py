@@ -10,7 +10,7 @@ def data():
     colors.rename(columns={'Red (8 bit)': 'Red', 'Green (8 bit)': 'Green', 'Blue (8 bit)':'Blue'}, inplace=True)
 
     # reassign names to limited pool of simple color terms
-    categories = ['red', 'orange', 'yellow', 'green', 'blue', 'violet', 'pink', 'brown', 'white', 'gray', 'black']
+    categories = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'brown', 'white', 'gray', 'black']
     bad_indices = []
     
     # iterate through the dataframe
@@ -18,8 +18,8 @@ def data():
         name = colors.Name.iloc[i] # pull the color name
         
         # reconcile the variation in naming in the dataset
-        if 'purple' in name:
-            name = 'violet'
+        if 'violet' in name:
+            name = 'purple'
         elif 'grey' in name:
             name = 'gray'
         # elif 'magenta' in name or 'rose' in name:

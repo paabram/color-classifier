@@ -3,20 +3,27 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import accuracy_score
 
-colors = preprocessing.data()
-y = colors.Name
-X = colors[['Red', 'Green', 'Blue']]
+class ColorPredictor():
+    def __init__(self):
+        self.colors = preprocessing.data()
+        y = self.colors.Name
+        X = self.colors[['Red', 'Green', 'Blue']]
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=255)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=255)
+        
+        self.model = KNeighborsClassifier(n_neighbors=7, weights='distance', algorithm='ball_tree')
+        self.model.fit(X_train.values, y_train)
+    def predict(self, rgb):
+        return self.model.predict([rgb])[0]
 
-# this code was used to find the optimal parameters for the knn model 
-# params = {'n_neighbors': range(5, 50), 'algorithm': ['ball_tree', 'kd_tree', 'brute', 'auto']}
-# model_grid = GridSearchCV(KNeighborsClassifier(), param_grid=params, n_jobs=-1)
-# model_grid.fit(X_train, y_train)
-# print(model_grid.best_estimator_)
+        # # this code was used to find the optimal parameters for the knn model 
+        # # params = {'n_neighbors': range(5, 50), 'algorithm': ['ball_tree', 'kd_tree', 'brute', 'auto']}
+        # # model_grid = GridSearchCV(KNeighborsClassifier(), param_grid=params, n_jobs=-1)
+        # # model_grid.fit(X_train, y_train)
+        # # print(model_grid.best_estimator_)
 
-model = KNeighborsClassifier(n_neighbors=7, weights='distance', algorithm='ball_tree')
-model.fit(X_train, y_train)
+        # model = KNeighborsClassifier(n_neighbors=7, weights='distance', algorithm='ball_tree')
+        # model.fit(X_train, y_train)
 
-test_preds = model.predict(X_test)
-print(accuracy_score(y_test, test_preds))
+        # test_preds = model.predict(X_test)
+        # print(accuracy_score(y_test, test_preds))
