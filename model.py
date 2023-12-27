@@ -27,16 +27,16 @@ class ColorPredictor():
         return self.model.predict([rgb])[0]
 
 # code for testing
-if __name__ == '__main__':
-    predictor = ColorPredictor()
+# if __name__ == '__main__':
+#     predictor = ColorPredictor()
 
-    # used a grid search to find optimal parameters
-    # params = {'n_neighbors': range(5, 50), 'algorithm': ['ball_tree', 'kd_tree', 'brute', 'auto']}
-    # model_grid = GridSearchCV(KNeighborsClassifier(), param_grid=params, n_jobs=-1)
-    # model_grid.fit(predictor.X_train, predictor.y_train)
-    # print(model_grid.best_estimator_)
+#     # used a grid search to find optimal parameters
+#     # params = {'n_neighbors': range(5, 50), 'algorithm': ['ball_tree', 'kd_tree', 'brute', 'auto']}
+#     # model_grid = GridSearchCV(KNeighborsClassifier(), param_grid=params, n_jobs=-1)
+#     # model_grid.fit(predictor.X_train, predictor.y_train)
+#     # print(model_grid.best_estimator_)
 
-    # checking accuracy of predictions
-    # tested value accuracy was 83.75%
-    test_preds = predictor.predict()
-    print(accuracy_score(predictor.y_test, test_preds))
+#     # checking accuracy of predictions
+#     # tested value accuracy was 83.75%
+#     test_preds = predictor.predict()
+#     print(accuracy_score(predictor.y_test, test_preds))
