@@ -20,9 +20,9 @@ class ColorPredictor():
     def predict(self, rgb: list[int] = None) -> str:
         '''The object takes in a list of rgb values and returns the predicted label from its model'''
         # default to testing values if no rgb is passed in
-        if rgb == None:
-            rgb = self.X_test.values
-            return self.model.predict(rgb)
+        # if rgb == None:
+        #     rgb = self.X_test.values
+        #     return self.model.predict(rgb)
         
         return self.model.predict([rgb])[0]
 
