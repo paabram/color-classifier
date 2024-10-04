@@ -1,13 +1,25 @@
 import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
 
 def data() -> pd.DataFrame:
     '''Manipulate the csv file of color names, preserving just the RGB values and simplifying the names into a limited number of categories.'''
     # create dataframe
     colors = pd.read_csv('color_names.csv')
     # drop columns that won't be used
-    colors.drop(columns=['Hex (24 bit)', 'Hue (degrees)', 'HSL.S (%)','HSL.L (%), HSV.S (%), HSV.V (%)'], inplace=True)
+    # colors.drop(columns=['Hex (24 bit)', 'Hue (degrees)', 'HSL.S (%)','HSL.L (%), HSV.S (%), HSV.V (%)'], inplace=True)
+    colors.drop(columns=['Hex (24 bit)', 'Hue (degrees)'], inplace=True)
     # rename relevant columns for usability
-    colors.rename(columns={'Red (8 bit)': 'Red', 'Green (8 bit)': 'Green', 'Blue (8 bit)':'Blue'}, inplace=True)
+    # last column was determined to be lightness through a few checks
+    # colors.rename(columns={'Red (8 bit)': 'Red', 'Green (8 bit)': 'Green', 'Blue (8 bit)':'Blue'}, inplace=True)
+    colors.rename(columns={'Red (8 bit)': 'Red', 
+                           'Green (8 bit)': 'Green', 
+                           'Blue (8 bit)':'Blue', 
+                           'HSL.S (%)':'Saturation',
+                           'HSL.L (%), HSV.S (%), HSV.V (%)':'Lightness'}, inplace=True)
+    
+    # scale training values to fall on the same range
+    scaler = MinMaxScaler()
+    colors[['Red', 'Green', 'Blue', 'Saturation', 'Lightness']] = scaler.fit_transform(colors[['Red', 'Green', 'Blue', 'Saturation', 'Lightness']])
 
     # reassign names to limited pool of simple color terms
     categories = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'brown', 'white', 'gray', 'black']
